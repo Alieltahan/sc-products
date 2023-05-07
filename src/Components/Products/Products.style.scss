@@ -1,0 +1,44 @@
+/**
+ * @category  sc
+ * @package   Product_Test
+ * @author    Ali Eltahan <info@alieltahan.com>
+ */
+
+.Products {
+    &_header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-block-end: 1px solid var(--var-color-black);
+    }
+
+    &_addBtn {
+        margin: 1rem;
+    }
+
+    &_list {
+        border-top: #282c34 solid 1px;
+        border-bottom: #282c34 solid 1px;
+    }
+    &__wrapper{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 20rem));
+        margin-block: 2rem;
+        row-gap: 2rem;
+        column-gap: 1.5rem;
+        text-align: center;
+    }
+    &__card {
+        position: relative;
+        border: 1px solid var(--var-color-black);
+        padding: 1rem;
+    }
+}
+
+.delete {
+    &-checkbox {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+    }
+}

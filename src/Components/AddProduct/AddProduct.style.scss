@@ -1,0 +1,30 @@
+/**
+ * @category  sc
+ * @package   Product_Test
+ * @author    Ali Eltahan <info@alieltahan.com>
+ */
+
+.AddProduct {
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-block-end: 1px solid var(--var-color-black);
+        margin-block-end: 1.5rem;
+    }
+
+    &__saveBtn {
+        margin: 1rem;
+    }
+
+    &__cancelBtn {
+        margin: 1rem;
+    }
+
+    &__form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 20rem;
+        row-gap: 1rem;
+    }
+}

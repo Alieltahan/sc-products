@@ -1,0 +1,13 @@
+/**
+ * @category  sc
+ * @package   Product_Test
+ * @author    Ali Eltahan <info@alieltahan.com>
+ */
+.footer {
+    &__wrapper{
+        border-top: 1px solid var(--var-color-black);
+        display: flex;
+        justify-content: center;
+        margin-block-start: 2rem;
+    }
+}
