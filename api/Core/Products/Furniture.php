@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @category     Product_Test
  * @package      sc
@@ -24,9 +25,9 @@ class Furniture extends Product implements ValidatorInterface
     public function execute()
     {
         foreach ($this->inputs as $key => $val) {
-            $method = "validate_{$key}";
+            $method = "validate" . ucfirst(strtolower($key));
             if (!method_exists(self::class, "$method")) {
-                Response::respond('failed', "$key: Invalid product key");
+                Response::respond('failed', "$key: Unexpected/Invalid product key");
             }
             $this->$method($key, $val);
         }
@@ -38,7 +39,7 @@ class Furniture extends Product implements ValidatorInterface
         $this->save($this->inputs);
     }
 
-    public function validate_attr($key, $val)
+    public function validateAttr($key, $val)
     {
         $height = $val['height'];
         $width = $val['width'];

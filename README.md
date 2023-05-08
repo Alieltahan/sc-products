@@ -16,13 +16,15 @@
 * Adding product.
 * Mass delete selected products.
 
-### Dependencies :
+## Dependencies :
 - Axios.
 - React hot toast.
 
-### Stack :
+## Stack :
 **Frontend** : React.
+
 **Backend**  : PHP.
+
 **Database** : MySQL.
 
 ## Author :

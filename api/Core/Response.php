@@ -1,20 +1,16 @@
 <?php
+
 /**
  * @category     Product_Test
  * @package      sc
  * @author       Ali Eltahan <info@alieltahan.com>
  */
 
-
 namespace Core;
 
 class Response
 {
-
-    const  BAD_REQUEST = 400;
-    const FORBIDDEN = 403;
-    const NOT_FOUND = 404;
-    const NOT_ACCEPTABLE = 406;
+    private const NOT_FOUND = 404;
 
     public static function respond($status, $data = [])
     {

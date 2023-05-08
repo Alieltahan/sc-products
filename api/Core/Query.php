@@ -1,10 +1,10 @@
 <?php
+
 /**
  * @category     Product_Test
  * @package      sc
  * @author       Ali Eltahan <info@alieltahan.com>
  */
-
 
 namespace Core;
 
@@ -13,7 +13,6 @@ use PDOException;
 
 class Query
 {
-
     public $db;
     private $statement;
     /**
@@ -65,11 +64,10 @@ class Query
     public function insertProduct($values, $table = 'products')
     {
         try {
-            $this->statement = $this->db->connection->prepare
-            ('INSERT INTO ' . $table . '(' . implode(', ', array_keys($values)) . ')' .
-                ' VALUES( :' . implode(',:', array_keys($values)) . ')');
+            $this->statement = $this->db->connection->prepare('INSERT INTO ' . $table . '(' . implode(', ', array_keys($values)) . ')' .
+            ' VALUES( :' . implode(',:', array_keys($values)) . ')');
             $this->statement->execute($values);
-        }catch (PDOException $e) {
+        } catch (PDOException $e) {
             Response::respond('failed', $e->getMessage());
         }
     }
@@ -79,7 +77,8 @@ class Query
         return $this->select(['sku'])->where('sku', '=', $sku)->stmt()->find();
     }
 
-    public function deleteProduct($table = 'products'){
+    public function deleteProduct($table = 'products')
+    {
         $this->query = "DELETE FROM $table";
         return $this;
     }

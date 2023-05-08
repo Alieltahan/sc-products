@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @category     Product_Test
  * @package      sc
@@ -6,7 +7,6 @@
  */
 
 use Core\App;
-
 use Core\Products\Product;
 use Core\Response;
 
@@ -17,9 +17,7 @@ if ($postData) {
         $product = new Product($postData, 'products');
         $product->add();
         Response::respond('success', 'Product has been added');
-
     } catch (PDOException $e) {
         Response::respond('failed', $e->getMessage());
     }
 }
-

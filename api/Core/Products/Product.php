@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @category     Product_Test
  * @package      sc
@@ -59,7 +60,7 @@ class Product extends Query
         (new $this->productClass($this->inputs))->execute();
     }
 
-    public function validate_sku($key, $val)
+    public function validateSku($key, $val)
     {
         if ($this->findDuplicateSKU($val)) {
             $key = strtoupper($key);
@@ -67,17 +68,17 @@ class Product extends Query
         }
     }
 
-    public function validate_name($key, $val)
+    public function validateName($key, $val)
     {
         $this->validateString($key, $val);
     }
 
-    public function validate_price($key, $val)
+    public function validatePrice($key, $val)
     {
         $this->validateNumber($key, $val);
     }
 
-    public function validate_type($key, $val)
+    public function validateType($key, $val)
     {
         if (!in_array(strtolower($val), array_keys($this->productTypes), false)) {
             $key = strtoupper($key);
@@ -95,7 +96,7 @@ class Product extends Query
 
     protected function validateNumber($key, $val)
     {
-        if ($val < 0) {
+        if ($val < 0 || empty($val)) {
             $key = strtoupper($key);
             $this->errors[] = "${key} should be valid integer/float greater than 0";
         }

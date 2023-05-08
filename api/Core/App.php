@@ -1,10 +1,10 @@
 <?php
+
 /**
  * @category     Product_Test
  * @package      sc
  * @author       Ali Eltahan <info@alieltahan.com>
  */
-
 
 namespace Core;
 
@@ -12,7 +12,8 @@ class App
 {
     protected static $container;
 
-    public static function setContainer($container){
+    public static function setContainer($container)
+    {
         static::$container = $container;
     }
 

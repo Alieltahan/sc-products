@@ -1,10 +1,10 @@
 <?php
+
 /**
  * @category     Product_Test
  * @package      sc
  * @author       Ali Eltahan <info@alieltahan.com>
  */
-
 
 namespace Core\Router;
 
@@ -12,7 +12,6 @@ use Core\Response;
 
 class Router
 {
-
     protected $routes = [];
 
     public function add(string $method, string $uri, string $controller)

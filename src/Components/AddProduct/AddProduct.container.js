@@ -76,7 +76,11 @@ class AddProductContainer extends PureComponent {
             if(r.data.status === 'success') {
                 this.props.navigate('/');
             }else {
-                r.data.data.forEach(err => toast.error(err));
+                if(Array.isArray(r.data.data)){
+                    r.data.data.forEach(err => toast.error(err))
+                }else {
+                    toast.error(r.data.data)
+                }
             }
         })
             .catch(e => console.log(e.message));

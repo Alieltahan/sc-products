@@ -1,23 +1,10 @@
 <?php
+
 /**
  * @category     Product_Test
  * @package      sc
  * @author       Ali Eltahan <info@alieltahan.com>
  */
-
-
-/**
- * @param $value
- * @return void
- */
-function dd($value)
-{
-    echo "<pre>";
-    var_dump($value);
-    echo "</pre>";
-    die();
-}
-
 
 /**
  * @param $path
