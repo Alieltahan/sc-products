@@ -6,7 +6,6 @@
  * @author       Ali Eltahan <info@alieltahan.com>
  */
 
-
 namespace Core\Products;
 
 use Core\Response;
@@ -14,11 +13,11 @@ use Core\Validator\Contract\ValidatorInterface;
 
 class Furniture extends Product implements ValidatorInterface
 {
-    protected $inputs = [];
+    protected $inputs;
 
-    public function __construct($inputs = [])
+    public function __construct($inputs)
     {
-        parent::__construct($inputs);
+        parent::__construct();
         $this->inputs = $inputs;
     }
 
@@ -26,7 +25,7 @@ class Furniture extends Product implements ValidatorInterface
     {
         foreach ($this->inputs as $key => $val) {
             $method = "validate" . ucfirst(strtolower($key));
-            if (!method_exists(self::class, "$method")) {
+            if (!method_exists("{$this->productClass}::class", "$method")) {
                 Response::respond('failed', "$key: Unexpected/Invalid product key");
             }
             $this->$method($key, $val);
@@ -44,9 +43,9 @@ class Furniture extends Product implements ValidatorInterface
         $height = $val['height'];
         $width = $val['width'];
         $length = $val['length'];
-        foreach ($val as $k => $prop){
+        foreach ($val as $k => $prop) {
             $this->validateNumber($k, $prop);
         }
-        $this->inputs[$key] = $height . 'x' . $width . 'x' . $length ;
+        $this->inputs[$key] = $height . 'x' . $width . 'x' . $length;
     }
 }

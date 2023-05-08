@@ -6,21 +6,19 @@
  * @author       Ali Eltahan <info@alieltahan.com>
  */
 
-
 namespace Core\Products;
 
 use Core\Response;
 use Core\Validator\Contract\ValidatorInterface;
 
-class DVD extends Product implements ValidatorInterface
+class Dvd extends Product implements ValidatorInterface
 {
-    protected $inputs=[];
-    public function __construct($inputs = [])
+    protected $inputs;
+    public function __construct($inputs)
     {
-        parent::__construct($inputs);
+        parent::__construct();
         $this->inputs = $inputs;
     }
-
     public function execute()
     {
         foreach ($this->inputs as $key => $val) {
@@ -30,7 +28,6 @@ class DVD extends Product implements ValidatorInterface
             }
             $this->$method($key, $val);
         }
-
         if ($this->errors) {
             Response::respond('failed', $this->errors);
         }

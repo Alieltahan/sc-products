@@ -30,7 +30,7 @@ class Product extends Query
     protected $table;
     protected $productTypes = [
         'book' => Book::class,
-        'dvd' => DVD::class,
+        'dvd' => Dvd::class,
         'furniture' => Furniture::class
     ];
 
