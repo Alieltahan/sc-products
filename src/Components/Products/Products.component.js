@@ -16,7 +16,9 @@ class ProductsComponent extends PureComponent {
                 <Link to="/add-product">
                     <button className="Products_addBtn">ADD</button>
                 </Link>
-                <button onClick={this.props.handleMassDelete} className="Products_massDeleteBtn" id="delete-product-btn">MASS DELETE</button>
+                <button onClick={this.props.handleMassDelete} className="Products_massDeleteBtn"
+                        id="delete-product-btn">MASS DELETE
+                </button>
             </div>
         </div>;
     };
@@ -27,10 +29,13 @@ class ProductsComponent extends PureComponent {
         'furniture': (attr) => `Dimension: ${attr}`
     };
     renderProducts = () => {
+        const { products = [] } = this.props;
+        if(!products.length) return;
         return <div className="Products__wrapper">
-            {this.props?.products?.map(product =>
-                <div className='Products__card' key={product.id}>
-                    <input onChange={() =>this.props.handleProductSelect(product.sku)} className='delete-checkbox' type="checkbox" id={product.id}/>
+            {this.props.products?.map(product =>
+                <div className="Products__card" key={product.id}>
+                    <input onChange={() => this.props.handleProductSelect(product.sku)} className="delete-checkbox"
+                           type="checkbox" id={product.id}/>
                     <p>{product.sku}</p>
                     <p>{product.name}</p>
                     <p>{product.price} $</p>
