@@ -4,4 +4,4 @@
  * @author    Ali Eltahan <info@alieltahan.com>
  */
 
-export const BE_URI = 'http://localhost:8000/';
+export const BE_URI = '/api/';

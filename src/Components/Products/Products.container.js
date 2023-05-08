@@ -18,8 +18,8 @@ class ProductsContainer extends PureComponent {
     };
 
     componentDidMount () {
-        fetch(BE_URI).then(data => data.json()).then((data) => this.setState({
-            products: data.data
+        axios.get(BE_URI).then((data) => this.setState({
+            products: data.data.data
         })).catch(err => console.log(err.message));
     }
 
@@ -41,6 +41,7 @@ class ProductsContainer extends PureComponent {
     handleMassDelete = (e) => {
         e.preventDefault();
         const { skus } = this.state.selectedProducts;
+        if(!skus.length) return;
         const productsCopy = [...this.state.products];
         const filteredProducts = productsCopy.filter(prod => !skus.includes(prod.sku));
         this.setState({
