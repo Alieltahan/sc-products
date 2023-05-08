@@ -1,12 +1,44 @@
+- [Demo](#Demo)
+- [Overview](#Overview)
+- [Dependencies](#Dependencies)
+- [Stack](#Stack)
+- [Author](#Author)
+
+
+## Demo :
+- Check out App [demo](http://productslist.alieltahan.com/)
+
+## Overview :
+#### An app to help you organize your tasks with the following features:
+
+* App consists of two pages: Products page and add products page.
+* Validating inputs in frontend/backend.
+* Adding product.
+* Mass delete selected products.
+
+### Dependencies :
+- Axios.
+- React hot toast.
+
+### Stack :
+**Frontend** : React.
+**Backend**  : PHP.
+**Database** : MySQL.
+
+## Author :
+__Ali Eltahan__.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 
 ## Available Scripts
 
 In the project directory, you can run:
 
 ### `npm start`
+
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
