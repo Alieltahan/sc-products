@@ -40,15 +40,15 @@ class ProductsContainer extends PureComponent {
 
     handleMassDelete = (e) => {
         e.preventDefault();
-        const {skus} = this.state.selectedProducts;
+        const { skus } = this.state.selectedProducts;
         const productsCopy = [...this.state.products];
-        const filteredProducts = productsCopy.filter(prod => !skus.includes(prod.sku))
+        const filteredProducts = productsCopy.filter(prod => !skus.includes(prod.sku));
         this.setState({
             ...this.state,
             products: filteredProducts
-        })
+        });
         axios.delete(BE_URI, { data: JSON.stringify(this.state.selectedProducts) }).then(r => {
-            if(r.data.status === 'success') {
+            if (r.data.status === 'success') {
                 this.setState({
                     selectedProducts: {
                         skus: []
@@ -59,9 +59,15 @@ class ProductsContainer extends PureComponent {
                 this.setState({
                     ...this.state,
                     products: productsCopy
-                })
+                });
                 toast.error(r.data.data);
             }
+        }).catch(e => {
+            toast.error(e.message);
+            this.setState({
+                ...this.state,
+                products: productsCopy
+            });
         });
     };
     containerProps = () => {

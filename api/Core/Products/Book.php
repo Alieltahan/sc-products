@@ -25,7 +25,7 @@ class Book extends Product implements ValidatorInterface
     {
         foreach ($this->inputs as $key => $val) {
             $method = "validate" . strtolower($key);
-            if (!method_exists("{$this->productClass}::class", "$method")) {
+            if (!method_exists(self::class", "$method")) {
                 Response::respond('failed', "$key: Unexpected/Invalid product key");
             }
             $this->$method($key, $val);

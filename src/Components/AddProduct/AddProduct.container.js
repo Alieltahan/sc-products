@@ -11,7 +11,7 @@ import { BOOK, DVD, FURNITURE } from './AddProduct.config';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import { withRouter } from '../HOC/Router/withRouter';
-import { BE_URI} from '../Products/Products.config';
+import { BE_URI } from '../Products/Products.config';
 
 class AddProductContainer extends PureComponent {
     state = {
@@ -73,17 +73,20 @@ class AddProductContainer extends PureComponent {
         }
 
         axios.post(BE_URI, JSON.stringify(submitData)).then(r => {
-            if(r.data.status === 'success') {
+            if (r.data.status === 'success') {
                 this.props.navigate('/');
-            }else {
-                if(Array.isArray(r.data.data)){
-                    r.data.data.forEach(err => toast.error(err))
-                }else {
-                    toast.error(r.data.data)
+            } else {
+                if (Array.isArray(r.data.data)) {
+                    r.data.data.forEach(err => toast.error(err));
+                } else {
+                    toast.error(r.data.data);
                 }
             }
         })
-            .catch(e => console.log(e.message));
+            .catch(e => {
+                console.log(e.message);
+                toast.error(e.message);
+            });
 
     };
 
