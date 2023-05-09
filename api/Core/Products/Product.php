@@ -38,7 +38,7 @@ class Product extends Query
     {
         parent::__construct();
         foreach ($inputs as $key => $val) {
-            $this->inputs[$key] = htmlspecialchars($val);
+            $this->inputs[$key] = $val;
         }
         $this->table = $table;
     }
