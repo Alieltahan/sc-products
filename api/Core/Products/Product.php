@@ -38,7 +38,7 @@ class Product extends Query
     {
         parent::__construct();
         foreach ($inputs as $key => $val) {
-            $this->inputs[$key] = $val;
+            $this->inputs[$key] = htmlspecialchars($val);
         }
         $this->table = $table;
     }
@@ -58,6 +58,23 @@ class Product extends Query
         $type = strtolower($this->inputs['type']);
         $this->productClass = $this->productTypes[$type];
         (new $this->productClass($this->inputs))->execute();
+    }
+
+     public function execute()
+    {
+        foreach ($this->inputs as $key => $val) {
+            $method = "validate" . ucfirst(strtolower($key));
+            if (!method_exists(get_class($this), "$method")) {
+                if (!method_exists(parent::class, "$method")) {
+                    Response::respond('failed', "$key: Unexpected/Invalid product key");
+                }
+            }
+            $this->$method($key, $val);
+        }
+        if ($this->errors) {
+            Response::respond('failed', $this->errors);
+        }
+        $this->save($this->inputs);
     }
 
     public function validateSku($key, $val)
